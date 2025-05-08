@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Estates | Luxury Properties Worldwide</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/706/706830.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f4f4f4;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeInDown 1s ease forwards;
+    }
+    nav h2 {
+      font-weight: 600;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ddd;
+    }
+    
+    /* Video Background Header */
+    .video-header {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    
+    .video-header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    .video-header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    
+    .header-content h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: slideInFromTop 1s ease-in-out;
+    }
+    
+    .header-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      animation: slideInFromBottom 1s ease-in-out;
+    }
+    
+    .cta-btn {
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background: #fff;
+      color: #222;
+      border: none;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: fadeIn 2s ease-in-out;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .cta-btn:hover {
+      background: #eee;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #333;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background: #222;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    /* Why Us Section */
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .benefit-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 3rem;
+      margin-bottom: 3rem;
+      transition: transform 0.3s;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .benefit-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .benefit-icon {
+      font-size: 3rem;
+      color: #222;
+      margin-right: 2rem;
+      min-width: 60px;
+    }
+    
+    .benefit-title {
+      font-size: 1.8rem;
+      color: #222;
+    }
+    
+    .benefit-content {
+      color: #555;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .benefit-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .highlight {
+      background: #f8f8f8;
+      padding: 2rem;
+      border-radius: 10px;
+      border-left: 4px solid #222;
+      margin: 2rem 0;
+    }
+    
+    /* Testimonial Section */
+    .testimonials {
+      background: #222;
+      color: white;
+      padding: 5rem 2rem;
+      margin-top: 4rem;
+    }
+    
+    .testimonial-card {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 1rem;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      object-fit: cover;
+    }
+    
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #222;
+      color: white;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: #ddd;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: #ddd;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #222;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: #444;
+      transform: translateY(-3px);
+    }
+
+    @keyframes slideInFromTop {
+      0% { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes slideInFromBottom {
+      0% { transform: translateY(100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      nav ul {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .header-content p {
+        font-size: 1.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .benefit-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .benefit-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .header-content h1 {
+        font-size: 2rem;
+      }
+      
+      .header-content p {
+        font-size: 1rem;
+      }
+      
+      .cta-btn {
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h2>Dream Estates</h2>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="listing.html">Listings</a></li>
+      <li><a href="agent.html">Agents</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About us</a></li>
+    </ul>
+  </nav>
+
+  <header class="video-header">
+    <video autoplay muted loop playsinline>
+      <source src="Realstate.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="header-content">
+      <h1 data-aos="fade-up">Welcome to Dream Estates</h1>
+      <p data-aos="fade-up" data-aos-delay="300">Where extraordinary living meets exceptional service</p>
+      <a href="#why" class="cta-btn" data-aos="fade-up" data-aos-delay="600">Discover Our Difference</a>
+    </div>
+  </header>
+
+  <section id="why">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Why Choose Dream Estates?</h2>
+      <p>Our commitment to excellence sets us apart in the luxury real estate market</p>
+    </div>
+    
+    <div class="benefits-container">
+      <!-- Benefit 1 -->
+      <div class="benefit-card" data-aos="fade-up">
+        <div class="benefit-header">
+          <div class="benefit-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3 class="benefit-title">Unparalleled Market Expertise</h3>
+        </div>
+        <div class="benefit-content">
+          <p>With over two decades of experience in luxury real estate, our team possesses an intimate knowledge of global property markets that few can match. We don't just sell homes - we cultivate relationships and understand the nuanced needs of high-net-worth individuals.</p>
+          
+          <div class="highlight">
+            <p>Our proprietary market analysis system tracks over 200 data points for every property, ensuring you receive the most comprehensive evaluation available anywhere in the industry.</p>
+          </div>
+          
+          <p>From emerging neighborhoods to established luxury enclaves, our agents maintain current knowledge about market trends, pricing fluctuations, and investment opportunities across six continents. We've successfully navigated multiple market cycles, providing our clients with strategic advice whether they're buying, selling, or investing.</p>
+        </div>
+      </div>
+      
+      <!-- Benefit 2 -->
+      <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="benefit-header">
+          <div class="benefit-icon">
+            <i class="fas fa-search-location"></i>
+          </div>
+          <h3 class="benefit-title">Bespoke Property Matching</h3>
+        </div>
+        <div class="benefit-content">
+          <p>Our proprietary matching algorithm considers over 50 lifestyle factors to connect you with properties that truly fit your way of living. Unlike standard searches that focus solely on bedrooms and square footage, we delve deeper to understand how you want to live.</p>
+          
+          <p>Through detailed consultations, we identify your:</p>
+          <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+            <li>Architectural preferences (from modernist masterpieces to historic estates)</li>
+            <li>Lifestyle requirements (entertaining spaces, home offices, wellness amenities)</li>
+            <li>Community priorities (privacy, proximity to cultural institutions, school districts)</li>
+            <li>Investment objectives (appreciation potential, rental yields, tax considerations)</li>
+          </ul>
+          
+          <p>This meticulous approach means we often present options our clients hadn't considered but turn out to be perfect matches. Our database includes both listed properties and exclusive off-market opportunities available only through our network.</p>
+        </div>
+      </div>
+      
+      <!-- Benefit 3 -->
+      <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="benefit-header">
+          <div class="benefit-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3 class="benefit-title">White-Glove Concierge Service</h3>
+        </div>
+        <div class="benefit-content">
+          <p>Purchasing a luxury property extends far beyond the transaction. Our concierge team provides end-to-end support that begins with your initial inquiry and continues long after closing.</p>
+          
+          <div class="highlight">
+            <p>"The Dream Estates team didn't just find our home - they helped design our lifestyle." - The Thompson Family, Clients since 2018</p>
+          </div>
+          
+          <p>Our services include:</p>
+          <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+            <li><strong>Relocation assistance:</strong> School placements, visa consultations, cultural orientation</li>
+            <li><strong>Property customization:</strong> Renovation planning, interior design referrals, smart home integration</li>
+            <li><strong>Lifestyle management:</strong> Staff hiring, membership acquisitions, private event coordination</li>
+            <li><strong>Investment services:</strong> Portfolio analysis, tax strategy, property management</li>
+          </ul>
+          
+          <p>We maintain relationships with over 500 premium service providers worldwide, ensuring every aspect of your transition is handled with the same discretion and excellence we apply to the property search itself.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="section-title" data-aos="fade-up">
+      <h2>By The Numbers</h2>
+    </div>
+    <div class="stats">
+      <div class="stat-item" data-aos="fade-up">
+        <div class="stat-number">25+</div>
+        <div class="stat-label">Years in Luxury Real Estate</div>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-number">$4.2B</div>
+        <div class="stat-label">In Closed Transactions</div>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Client Satisfaction Rate</div>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Global Offices</div>
+      </div>
+    </div>
+    
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <div class="section-title" data-aos="fade-up">
+        <h2 style="color: white;">Client Testimonials</h2>
+      </div>
+      <div class="benefits-container">
+        <div class="testimonial-card" data-aos="fade-up">
+          <p class="testimonial-text">"Dream Estates transformed what we thought would be a stressful relocation into an exhilarating journey. Their team's attention to detail and network of contacts opened doors to properties we never would have found on our own. Two years later, they still check in to ensure everything with our home is perfect."</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah J.">
+            <div>
+              <div>Sarah Johnson</div>
+              <div style="font-weight: 300; font-size: 0.9rem;">London, UK</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+          <p class="testimonial-text">"As an international investor, I need partners who understand both real estate and cross-border complexities. Dream Estates navigated tax implications, currency considerations, and local regulations across three countries for my portfolio. Their financial acumen matches their property expertise - a rare combination."</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael C.">
+            <div>
+              <div>Michael Chen</div>
+              <div style="font-weight: 300; font-size: 0.9rem;">Hong Kong</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Dream Estates</h3>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="listing.html">Listings</a>
+        <a href="agent.html">Agents</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About us</a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=100089725440598"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/josh.ouya/"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p>&copy; 2025 Dream Estates. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">↑ Top</div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Show/hide back to top button
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Dream Estates | Luxury Properties Worldwide</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/706/706830.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f4f4f4;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav h2 {
+      font-weight: 600;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ddd;
+    }
+    
+    .hero {
+      height: 60vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      margin-top: 60px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    section {
+      padding: 4rem 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #333;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background: #222;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #222;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .milestone {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    
+    .milestone i {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 1rem;
+    }
+    
+    .milestone h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .milestone p {
+      color: #666;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #222;
+      color: white;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: #ddd;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: #ddd;
+    }
+    
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .milestones {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .milestones {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h2>Dream Estates</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="listing.html">Listings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="agent.html">Agents</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div>
+      <h1 data-aos="fade-up">Our Story</h1>
+    </div>
+  </div>
+
+  <section>
+    <div class="about-content">
+      <div class="about-image" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our Team">
+      </div>
+      <div class="about-text" data-aos="fade-left">
+        <h3>From Humble Beginnings to Global Presence</h3>
+        <p>Dream Estates was founded in 1995 by Joshua Ouya with a simple vision: to create a real estate company that prioritizes client needs above all else. Starting from a small office in New York with just three agents, we've grown into an international luxury real estate brand with offices in 12 countries.</p>
+        <p>Our success stems from our unwavering commitment to integrity, innovation, and exceptional service. We believe that finding or selling a home should be an exciting, stress-free experience, and we've built our reputation on making that belief a reality for our clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #f9f9f9;">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Core Values</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-text" data-aos="fade-right">
+        <h3>What Makes Us Different</h3>
+        <p><strong>Client-Centric Approach:</strong> Every decision we make is with our clients' best interests in mind. We listen carefully to understand your unique needs and preferences.</p>
+        <p><strong>Market Expertise:</strong> Our agents are local market specialists with deep knowledge of pricing trends, neighborhood dynamics, and investment potential.</p>
+        <p><strong>Global Network:</strong> With our extensive international connections, we can help you find properties worldwide or connect you with qualified buyers from across the globe.</p>
+        <p><strong>Innovative Technology:</strong> We leverage cutting-edge tools to provide virtual tours, market analysis, and seamless transactions.</p>
+      </div>
+      <div class="about-image" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our Values">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Milestones</h2>
+    </div>
+    <div class="milestones">
+      <div class="milestone" data-aos="fade-up">
+        <i class="fas fa-building"></i>
+        <h4>1995</h4>
+        <p>Founded in New York with 3 agents and a commitment to excellence</p>
+      </div>
+      <div class="milestone" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-award"></i>
+        <h4>2005</h4>
+        <p>Named "Real Estate Company of the Year" by Luxury Living Magazine</p>
+      </div>
+      <div class="milestone" data-aos="fade-up" data-aos-delay="400">
+        <i class="fas fa-globe"></i>
+        <h4>2015</h4>
+        <p>Expanded internationally with offices in London, Dubai, and Hong Kong</p>
+      </div>
+      <div class="milestone" data-aos="fade-up">
+        <i class="fas fa-home"></i>
+        <h4>10,000+</h4>
+        <p>Properties sold worldwide with an average satisfaction rating of 98%</p>
+      </div>
+      <div class="milestone" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-users"></i>
+        <h4>250+</h4>
+        <p>Dedicated real estate professionals across 12 countries</p>
+      </div>
+      <div class="milestone" data-aos="fade-up" data-aos-delay="400">
+        <i class="fas fa-trophy"></i>
+        <h4>2025</h4>
+        <p>Recognized as the #1 luxury real estate brand by Global Real Estate Awards</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Dream Estates</h3>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="listing.html">Listings</a>
+        <a href="about.html">About</a>
+        <a href="agent.html">Agents</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=100089725440598"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/josh.ouya/"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p>&copy; 2025 Dream Estates. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+</body>
+</html>
